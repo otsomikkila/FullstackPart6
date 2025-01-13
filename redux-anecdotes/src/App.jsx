@@ -1,42 +1,18 @@
-import { useSelector, useDispatch } from 'react-redux'
-import PropTypes from 'prop-types';
-import { vote } from './reducers/anecdoteReducer'
 import AnecdoteForm from './components/AnecdoteForm'
-
-const Anecdote = ({ anecdote, handeClick }) => {
-  return (
-    <div>
-          <div>
-            {anecdote.content}
-          </div>
-          <div>
-            has {anecdote.votes}
-            <button onClick={handeClick}>vote</button>
-          </div>
-        </div>
-  )
-}
+import AnecdoteList from './components/AnecdoteList'
 
 
 const App = () => {
-  const anecdotes = useSelector(state => state)
-  const dispatch = useDispatch()
 
   return (
     <div>
       <h2>Anecdotes</h2>
-      {anecdotes.map(anecdote =>
-        <Anecdote key={anecdote.id} anecdote={anecdote} handeClick={() => dispatch(vote(anecdote.id))}/>
-      )}
-      <h2>create new</h2>
+      <AnecdoteList />
       <AnecdoteForm />
     </div>
   )
 }
 
-Anecdote.propTypes = {
-  anecdote: PropTypes.object.isRequired, // Adjust type and 'isRequired' as needed
-  handeClick: PropTypes.func.isRequired
-}
+
 
 export default App
