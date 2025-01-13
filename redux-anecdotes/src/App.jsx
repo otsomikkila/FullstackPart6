@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types';
 import { vote } from './reducers/anecdoteReducer'
+import NewAnecdote from './components/NewAnecdote'
 
 const Anecdote = ({ anecdote, handeClick }) => {
   return (
@@ -16,6 +17,7 @@ const Anecdote = ({ anecdote, handeClick }) => {
   )
 }
 
+
 const App = () => {
   const anecdotes = useSelector(state => state)
   const dispatch = useDispatch()
@@ -27,10 +29,7 @@ const App = () => {
         <Anecdote key={anecdote.id} anecdote={anecdote} handeClick={() => dispatch(vote(anecdote.id))}/>
       )}
       <h2>create new</h2>
-      <form>
-        <div><input /></div>
-        <button>create</button>
-      </form>
+      <NewAnecdote />
     </div>
   )
 }
