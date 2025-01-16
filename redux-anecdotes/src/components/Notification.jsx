@@ -7,7 +7,7 @@ const Notification = () => {
 
   let visibility = notification === '' ? 'hidden' : 'visible'
 
-  console.log(visibility)
+  //console.log(visibility)
 
   const style = {
     border: 'solid',
