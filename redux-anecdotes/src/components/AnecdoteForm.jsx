@@ -1,6 +1,6 @@
 import { createAnecdote } from "../reducers/anecdoteReducer"
 import { useDispatch } from 'react-redux'
-import { notificationChange, notificationReset } from '../reducers/notificationReducer' 
+import { setNotification } from '../reducers/notificationReducer' 
 
 const AnecdoteForm = () => {
   const dispatch = useDispatch()
@@ -10,15 +10,13 @@ const AnecdoteForm = () => {
     const content = event.target.anecdote.value
     event.target.anecdote.value = ''
     //console.log(content)
-    dispatch(createAnecdote(content))
-
     const message = `you added ${content}`
-    dispatch(notificationChange(message))
-    setTimeout(() => {
-      dispatch(notificationReset())
-    },
-    5000)
+    dispatch(setNotification(message, 5))
+    dispatch(createAnecdote(content))
   }
+
+  //form lähettää dispatchilla message ja kesto
+  //reducer muuttaa statea -> ja takaisin tyhjäksi
 
   return (
     <div>
@@ -30,5 +28,6 @@ const AnecdoteForm = () => {
     </div>
   )
 }
+
 
 export default AnecdoteForm
