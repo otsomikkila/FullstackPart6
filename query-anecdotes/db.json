@@ -2,17 +2,17 @@
   "anecdotes": [
     {
       "content": "haiusghaiusfh",
-      "votes": 7,
+      "votes": 16,
       "id": "tTdrOlB"
     },
     {
       "content": "asfasf",
-      "votes": 5,
+      "votes": 13,
       "id": "CtWR0SY"
     },
     {
       "content": "asfgaetgfaeg",
-      "votes": 0,
+      "votes": 2,
       "id": "4_gexHK"
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "content": "moikka",
-      "votes": 0,
+      "votes": 1,
       "id": "XS14DrW"
     },
     {
@@ -44,6 +44,21 @@
       "content": "siltä kyllä näyttäää",
       "votes": 0,
       "id": "ShSYDkH"
+    },
+    {
+      "content": "moikka",
+      "votes": 0,
+      "id": "juGqOqV"
+    },
+    {
+      "content": "moikk",
+      "votes": 0,
+      "id": "DS5wQYy"
+    },
+    {
+      "content": "testailua",
+      "votes": 0,
+      "id": "lZh_Vef"
     }
   ]
 }

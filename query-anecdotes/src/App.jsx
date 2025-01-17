@@ -1,13 +1,15 @@
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
+import { useContext } from 'react'
+import NotificationContext from './NotificationContext'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { getAnecdotes, updateAnecdote } from './requests'
 
 
 const App = () => {
   const queryClient = useQueryClient()
+  const[notification, notificationDispatch] = useContext(NotificationContext)
 
-  
   const updateAnecdoteMutation = useMutation({
     mutationFn: updateAnecdote,
     onSuccess: () => {
@@ -16,8 +18,19 @@ const App = () => {
   })
 
   const handleVote = async (anecdote) => {
-    console.log({ ...anecdote, votes: anecdote.votes + 1 })
-    updateAnecdoteMutation.mutate({ ...anecdote, votes: anecdote.votes + 1 })
+    updateAnecdoteMutation.mutate({ ...anecdote, votes: anecdote.votes + 1 },
+      {
+        onSuccess: () => {
+          notificationDispatch({
+            type: 'SET',
+            payload: `anecdote ${anecdote.content} voted`
+          })
+          setTimeout(() => {
+            notificationDispatch({ type: 'RES' })
+          }, 5000) // Clear the notification after 5 seconds
+        },
+      }
+    )
   }
   
 
